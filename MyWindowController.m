@@ -13,8 +13,8 @@
 
 @implementation MyWindowController
 
-@synthesize background;
 @synthesize navBar;
+@synthesize background;
 @synthesize toolBar;
 
 - (void)awakeFromNib {

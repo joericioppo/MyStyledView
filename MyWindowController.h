@@ -12,8 +12,8 @@
 
 @interface MyWindowController : NSWindowController {}
 
-@property (assign) IBOutlet MyStyledView *background;
 @property (assign) IBOutlet MyStyledView *navBar;
+@property (assign) IBOutlet MyStyledView *background;
 @property (assign) IBOutlet MyStyledView *toolBar;
 
 @end
