@@ -31,7 +31,6 @@
 	CGFloat rightSliceAdjustedOriginX = NSMinX(contentStretch) + middleFillWidth;
 	CGFloat rightSliceWidth = self.size.width - rightSliceSourceOriginX;
 	
-	//--
 	NSRect bottomLeftCornerRect = NSMakeRect(0.0, 0.0, contentStretch.origin.x, contentStretch.origin.y);
 	[self drawInRect:bottomLeftCornerRect fromRect:bottomLeftCornerRect operation:NSCompositeSourceOver fraction:1.0];
 	
@@ -61,11 +60,17 @@
 	
 	NSRect bottomEdgeFillSourceRect = NSMakeRect(contentStretch.origin.x, 0.0, contentStretch.size.width, contentStretch.origin.y);
 	NSRect bottomEdgeFillDrawingRect = NSMakeRect(contentStretch.origin.x, 0.0, middleFillWidth, contentStretch.origin.y);
-	[self drawInRect:bottomEdgeFillDrawingRect fromRect:bottomEdgeFillSourceRect operation:NSCompositeSourceOver fraction:1.00];
+	[self drawInRect:bottomEdgeFillDrawingRect fromRect:bottomEdgeFillSourceRect operation:NSCompositeSourceOver fraction:1.0];
 	
 	NSRect rectToStretch = contentStretch;
 	NSRect stretchedRectToDraw = NSMakeRect(rectToStretch.origin.x, rectToStretch.origin.y, middleFillWidth, middleFillHeight);
 	[self drawInRect:stretchedRectToDraw fromRect:rectToStretch operation:NSCompositeSourceOver fraction:1.0];
+}
+
+- (void)drawInRect:(NSRect)rect leftCap:(CGFloat)leftCap topCap:(CGFloat)topCap {
+	
+	NSRect contentStretchRect = NSMakeRect(leftCap, rect.size.height - topCap, 0.0, 0.0);
+	[self drawInRect:rect contentStretch:contentStretchRect];
 }
 
 @end

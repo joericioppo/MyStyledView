@@ -12,5 +12,6 @@
 @interface NSImage (Additions)
 
 - (void)drawInRect:(NSRect)rect contentStretch:(NSRect)contentStretch;
+- (void)drawInRect:(NSRect)rect leftCap:(CGFloat)leftCap topCap:(CGFloat)topCap;
 
 @end

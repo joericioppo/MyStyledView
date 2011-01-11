@@ -20,10 +20,7 @@
 
 @property (nonatomic, retain) NSImage		*backgroundImage;
 @property (nonatomic, retain) NSImage		*inactiveBackgroundImage;
-@property (nonatomic, assign) NSRect		contentStretch; // applied to backgroundImage
-
-@property (nonatomic, copy)	  NSArray		*backgroundImages; //three part image. (leftCap, middleFill, rightCap)
-@property (nonatomic, copy)	  NSArray		*inactiveBackgroundImages; //three part image. (leftCap, middleFill, rightCap)
+@property (nonatomic, assign) NSRect		contentStretch;
 
 @property (nonatomic, retain) NSColor		*topEdgeColor;
 @property (nonatomic, retain) NSColor		*topHighlightColor;

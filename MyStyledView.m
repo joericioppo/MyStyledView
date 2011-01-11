@@ -21,8 +21,6 @@
 @synthesize backgroundImage;
 @synthesize inactiveBackgroundImage;
 @synthesize contentStretch;
-@synthesize backgroundImages;
-@synthesize inactiveBackgroundImages;
 @synthesize topEdgeColor;
 @synthesize topHighlightColor;
 @synthesize bottomHighlightColor;
@@ -32,14 +30,6 @@
 @synthesize innerShadow;
 @synthesize innerGlow;
 
-//- (id)initWithFrame:(NSRect)frame {
-//	
-//    self = [super initWithFrame:frame];
-//    if (self) {
-//    }
-//    return self;
-//}
-
 - (void)dealloc {
 	
 	self.gradient = nil;
@@ -48,8 +38,6 @@
 	self.inactiveBackgroundColor = nil;
 	self.backgroundImage = nil;
 	self.inactiveBackgroundImage = nil;
-	self.backgroundImages = nil;
-	self.inactiveBackgroundImages = nil;
 	self.topEdgeColor = nil;
 	self.topHighlightColor = nil;
 	self.bottomHighlightColor = nil;
@@ -72,33 +60,10 @@
 		NSRectFill(rect);
 	}
 	
-	NSGradient *gradientToDraw = isKeyWindow ? self.gradient : self.inactiveGradient ? : self.gradient; //hrm
+	NSGradient *gradientToDraw = isKeyWindow ? self.gradient : self.inactiveGradient ? : self.gradient;
 	if (gradientToDraw) {
 		[gradientToDraw drawInRect:rect angle:self.gradientAngle ? : self.isFlipped ? 90 : -90];
 	}
-	
-//	NSArray *backgroundImagesToDraw =  isKeyWindow ? self.backgroundImages : self.inactiveBackgroundImages ? : self.backgroundImages;
-//	if (backgroundImagesToDraw.count == 3) {
-//		
-//		__block BOOL shouldDrawThreePartImage = NO;
-//		[self.backgroundImages enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-//			if ([obj isKindOfClass:[NSImage class]]) {
-//				shouldDrawThreePartImage = YES;
-//			} else {
-//				shouldDrawThreePartImage = NO;
-//				*stop = YES;
-//			}
-//			
-//		}];
-//		
-//		if (shouldDrawThreePartImage) {			
-//			NSImage *leftCap = [self.backgroundImages objectAtIndex:0];
-//			NSImage *middleFill = [self.backgroundImages objectAtIndex:1];
-//			NSImage *rightCap = [self.backgroundImages objectAtIndex:2];			
-//			NSDrawThreePartImage(rect, leftCap, middleFill, rightCap, 
-//								 NO, NSCompositeSourceOver, 1.0, self.isFlipped);	
-//		}
-//	}
 	
 	NSImage *backgroundImageToDraw = isKeyWindow ? self.backgroundImage : self.inactiveBackgroundImage ? : self.backgroundImage;
 	if (backgroundImageToDraw) {		
