@@ -68,7 +68,7 @@
 	NSImage *backgroundImageToDraw = isKeyWindow ? self.backgroundImage : self.inactiveBackgroundImage ? : self.backgroundImage;
 	if (backgroundImageToDraw) {		
 		if (self.contentStretch.origin.x != NSNotFound) {
-			[backgroundImageToDraw drawInRect:rect contentStretch:self.contentStretch];
+			[backgroundImageToDraw drawInRect:rect withContentStretch:self.contentStretch];
 		} else {
 			NSRect imageRect = NSMakeRect(0.0, 0.0, backgroundImageToDraw.size.width, backgroundImageToDraw.size.height);
 			[backgroundImageToDraw drawInRect:rect fromRect:imageRect operation:NSCompositeSourceOver fraction:1.0];

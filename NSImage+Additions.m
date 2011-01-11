@@ -11,13 +11,14 @@
 
 @implementation NSImage (Additions)
 
-- (void)drawInRect:(NSRect)rect contentStretch:(NSRect)contentStretch {
+- (void)drawInRect:(NSRect)rect withContentStretch:(NSRect)contentStretch {
 	
 	NSSize imageSize = self.size;
 	
 	if (imageSize.width > rect.size.width || imageSize.height > rect.size.height) {
 		NSRect imageRect = NSMakeRect(0.0, 0.0, imageSize.width, imageSize.height);
 		[self drawInRect:rect fromRect:imageRect operation:NSCompositeSourceOver fraction:1.0];
+		return;
 	}
 	
 	CGFloat middleFillHeight = rect.size.height - imageSize.height;
@@ -67,10 +68,10 @@
 	[self drawInRect:stretchedRectToDraw fromRect:rectToStretch operation:NSCompositeSourceOver fraction:1.0];
 }
 
-- (void)drawInRect:(NSRect)rect leftCap:(CGFloat)leftCap topCap:(CGFloat)topCap {
+- (void)drawInRect:(NSRect)rect withLeftCap:(CGFloat)leftCap topCap:(CGFloat)topCap {
 	
-	NSRect contentStretchRect = NSMakeRect(leftCap, rect.size.height - topCap, 0.0, 0.0);
-	[self drawInRect:rect contentStretch:contentStretchRect];
+	NSRect contentStretch = NSMakeRect(leftCap, rect.size.height - topCap, 0.0, 0.0);
+	[self drawInRect:rect withContentStretch:contentStretch];
 }
 
 @end

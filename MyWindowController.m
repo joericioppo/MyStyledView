@@ -45,6 +45,7 @@
 	self.toolBar.gradient = [NSGradient gradientWithStartingColor:[NSColor colorWithCalibratedHue:0.625 saturation:0.0 brightness:0.7 alpha:1.0] 
 													  endingColor:[NSColor colorWithCalibratedHue:0.625 saturation:0.0 brightness:0.6 alpha:1.0]];
 	self.toolBar.topEdgeColor = [NSColor colorWithCalibratedWhite:0.8 alpha:1.0];
+	self.toolBar.bottomEdgeColor = [NSColor colorWithCalibratedWhite:0.65 alpha:1.0];
 }
 
 @end

@@ -18,7 +18,7 @@
 	
 	self = [self init];
 	
-	if (self) {
+	if (self != nil) {
 		self.shadowColor = color;
 		self.shadowOffset = offset;
 		self.shadowBlurRadius = blur;
