@@ -7,9 +7,8 @@
 //
 
 #import "MyStyledView.h"
-//#import "NSGradient+Additions.h"
 #import "NSBezierPath+Additions.h"
-//#import "NSShadow+Additions.h"
+#import "NSImage+Additions.h"
 
 
 @implementation MyStyledView
@@ -19,6 +18,9 @@
 @synthesize inactiveGradient;
 @synthesize backgroundColor;
 @synthesize inactiveBackgroundColor;
+@synthesize backgroundImage;
+@synthesize inactiveBackgroundImage;
+@synthesize contentStretch;
 @synthesize backgroundImages;
 @synthesize inactiveBackgroundImages;
 @synthesize topEdgeColor;
@@ -38,6 +40,27 @@
 //    return self;
 //}
 
+- (void)dealloc {
+	
+	self.gradient = nil;
+	self.inactiveGradient = nil;
+	self.backgroundColor = nil;
+	self.inactiveBackgroundColor = nil;
+	self.backgroundImage = nil;
+	self.inactiveBackgroundImage = nil;
+	self.backgroundImages = nil;
+	self.inactiveBackgroundImages = nil;
+	self.topEdgeColor = nil;
+	self.topHighlightColor = nil;
+	self.bottomHighlightColor = nil;
+	self.bottomEdgeColor = nil;
+	self.rightEdgeGradient = nil;
+	self.leftEdgeGradient = nil;
+	self.innerShadow = nil;
+	self.innerGlow = nil;
+	[super dealloc];
+}
+
 - (void)drawRect:(NSRect)dirtyRect {
 	
 	NSRect rect = self.bounds;
@@ -49,31 +72,41 @@
 		NSRectFill(rect);
 	}
 	
-	NSGradient *gradientToDraw = isKeyWindow ? self.gradient : self.inactiveGradient ? self.inactiveGradient : self.gradient; //hrm
+	NSGradient *gradientToDraw = isKeyWindow ? self.gradient : self.inactiveGradient ? : self.gradient; //hrm
 	if (gradientToDraw) {
 		[gradientToDraw drawInRect:rect angle:self.gradientAngle ? : self.isFlipped ? 90 : -90];
 	}
 	
-	NSArray *backgroundImagesToDraw =  isKeyWindow ? self.backgroundImages : self.inactiveBackgroundImages ? : self.backgroundImages;
-	if (backgroundImagesToDraw.count == 3) {
-		
-		__block BOOL shouldDrawThreePartImage = NO;
-		[self.backgroundImages enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-			if ([obj isKindOfClass:[NSImage class]]) {
-				shouldDrawThreePartImage = YES;
-			} else {
-				shouldDrawThreePartImage = NO;
-				*stop = YES;
-			}
-			
-		}];
-		
-		if (shouldDrawThreePartImage) {			
-			NSImage *leftCap = [self.backgroundImages objectAtIndex:0];
-			NSImage *middleFill = [self.backgroundImages objectAtIndex:1];
-			NSImage *rightCap = [self.backgroundImages objectAtIndex:2];			
-			NSDrawThreePartImage(rect, leftCap, middleFill, rightCap, 
-								 NO, NSCompositeSourceOver, 1.0, self.isFlipped);	
+//	NSArray *backgroundImagesToDraw =  isKeyWindow ? self.backgroundImages : self.inactiveBackgroundImages ? : self.backgroundImages;
+//	if (backgroundImagesToDraw.count == 3) {
+//		
+//		__block BOOL shouldDrawThreePartImage = NO;
+//		[self.backgroundImages enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+//			if ([obj isKindOfClass:[NSImage class]]) {
+//				shouldDrawThreePartImage = YES;
+//			} else {
+//				shouldDrawThreePartImage = NO;
+//				*stop = YES;
+//			}
+//			
+//		}];
+//		
+//		if (shouldDrawThreePartImage) {			
+//			NSImage *leftCap = [self.backgroundImages objectAtIndex:0];
+//			NSImage *middleFill = [self.backgroundImages objectAtIndex:1];
+//			NSImage *rightCap = [self.backgroundImages objectAtIndex:2];			
+//			NSDrawThreePartImage(rect, leftCap, middleFill, rightCap, 
+//								 NO, NSCompositeSourceOver, 1.0, self.isFlipped);	
+//		}
+//	}
+	
+	NSImage *backgroundImageToDraw = isKeyWindow ? self.backgroundImage : self.inactiveBackgroundImage ? : self.backgroundImage;
+	if (backgroundImageToDraw) {		
+		if (self.contentStretch.origin.x != NSNotFound) {
+			[backgroundImageToDraw drawInRect:rect contentStretch:self.contentStretch];
+		} else {
+			NSRect imageRect = NSMakeRect(0.0, 0.0, backgroundImageToDraw.size.width, backgroundImageToDraw.size.height);
+			[backgroundImageToDraw drawInRect:rect fromRect:imageRect operation:NSCompositeSourceOver fraction:1.0];
 		}
 	}
 	

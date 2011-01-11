@@ -15,5 +15,6 @@
 @property (assign) IBOutlet MyStyledView *navBar;
 @property (assign) IBOutlet MyStyledView *background;
 @property (assign) IBOutlet MyStyledView *toolBar;
+@property (assign) IBOutlet MyStyledView *popUpThing;
 
 @end

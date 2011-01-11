@@ -9,6 +9,5 @@
 
 - (void)fillWithInnerShadow:(NSShadow *)shadow;
 - (void)drawBlurWithColor:(NSColor *)color radius:(CGFloat)radius;
-+ (NSBezierPath *)bezierPathRightEdgeForRect:(NSRect)rect;
 
 @end

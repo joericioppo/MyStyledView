@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* MyStyledViewAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* MyStyledViewAppDelegate.m */; };
+		5D17FCE012DBABC200F1F6D3 /* NSGraphicsContext+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D17FCDF12DBABC200F1F6D3 /* NSGraphicsContext+Additions.m */; };
+		5DE7986812DC06DC006A4C0A /* NSImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE7986712DC06DC006A4C0A /* NSImage+Additions.m */; };
+		5DE7991A12DC3C06006A4C0A /* dark_popup.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DE7991912DC3C06006A4C0A /* dark_popup.png */; };
 		5DF8E71512DAEF99001A7779 /* MyStyledView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF8E71412DAEF99001A7779 /* MyStyledView.m */; };
 		5DF8E72512DAF275001A7779 /* NSGradient+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF8E72412DAF275001A7779 /* NSGradient+Additions.m */; };
 		5DF8E72812DAF417001A7779 /* NSBezierPath+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF8E72712DAF417001A7779 /* NSBezierPath+Additions.m */; };
@@ -31,6 +34,11 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		5D17FCDE12DBABC200F1F6D3 /* NSGraphicsContext+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSGraphicsContext+Additions.h"; sourceTree = "<group>"; };
+		5D17FCDF12DBABC200F1F6D3 /* NSGraphicsContext+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSGraphicsContext+Additions.m"; sourceTree = "<group>"; };
+		5DE7986612DC06DC006A4C0A /* NSImage+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+Additions.h"; sourceTree = "<group>"; };
+		5DE7986712DC06DC006A4C0A /* NSImage+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+Additions.m"; sourceTree = "<group>"; };
+		5DE7991912DC3C06006A4C0A /* dark_popup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dark_popup.png; sourceTree = "<group>"; };
 		5DF8E71312DAEF99001A7779 /* MyStyledView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyStyledView.h; sourceTree = "<group>"; };
 		5DF8E71412DAEF99001A7779 /* MyStyledView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyStyledView.m; sourceTree = "<group>"; };
 		5DF8E72312DAF275001A7779 /* NSGradient+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSGradient+Additions.h"; sourceTree = "<group>"; };
@@ -126,6 +134,7 @@
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
 				5DF8E73F12DAF7D0001A7779 /* MyWindow.xib */,
+				5DE7991912DC3C06006A4C0A /* dark_popup.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -148,6 +157,10 @@
 				5DF8E72712DAF417001A7779 /* NSBezierPath+Additions.m */,
 				5DF8E73512DAF66D001A7779 /* NSShadow+Additions.h */,
 				5DF8E73612DAF66D001A7779 /* NSShadow+Additions.m */,
+				5DE7986612DC06DC006A4C0A /* NSImage+Additions.h */,
+				5DE7986712DC06DC006A4C0A /* NSImage+Additions.m */,
+				5D17FCDE12DBABC200F1F6D3 /* NSGraphicsContext+Additions.h */,
+				5D17FCDF12DBABC200F1F6D3 /* NSGraphicsContext+Additions.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -205,6 +218,7 @@
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 				5DF8E74012DAF7D0001A7779 /* MyWindow.xib in Resources */,
+				5DE7991A12DC3C06006A4C0A /* dark_popup.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,6 +236,8 @@
 				5DF8E72812DAF417001A7779 /* NSBezierPath+Additions.m in Sources */,
 				5DF8E73712DAF66D001A7779 /* NSShadow+Additions.m in Sources */,
 				5DF8E73E12DAF7A1001A7779 /* MyWindowController.m in Sources */,
+				5D17FCE012DBABC200F1F6D3 /* NSGraphicsContext+Additions.m in Sources */,
+				5DE7986812DC06DC006A4C0A /* NSImage+Additions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

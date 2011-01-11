@@ -15,9 +15,9 @@
 	return [[[self alloc] initWithColors:colorArray] autorelease];
 }
 
-+ (NSGradient *)gradientWithStartingColor:(NSColor *)startingColor endingColor:(NSColor *)endingColor;
-{
-    return [self gradientWithColors:[NSArray arrayWithObjects:startingColor, endingColor, nil]];
++ (NSGradient *)gradientWithStartingColor:(NSColor *)startingColor endingColor:(NSColor *)endingColor {
+	
+    return [[[self alloc] initWithStartingColor:startingColor endingColor:endingColor] autorelease];
 }
 
 @end

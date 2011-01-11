@@ -12,11 +12,15 @@
 @interface MyStyledView : NSView {}
 
 @property (nonatomic, retain) NSGradient	*gradient;
-@property (nonatomic, assign) CGFloat		gradientAngle;
 @property (nonatomic, retain) NSGradient	*inactiveGradient;
+@property (nonatomic, assign) CGFloat		gradientAngle;
 
 @property (nonatomic, retain) NSColor		*backgroundColor;
 @property (nonatomic, retain) NSColor		*inactiveBackgroundColor;
+
+@property (nonatomic, retain) NSImage		*backgroundImage;
+@property (nonatomic, retain) NSImage		*inactiveBackgroundImage;
+@property (nonatomic, assign) NSRect		contentStretch; // applied to backgroundImage
 
 @property (nonatomic, copy)	  NSArray		*backgroundImages; //three part image. (leftCap, middleFill, rightCap)
 @property (nonatomic, copy)	  NSArray		*inactiveBackgroundImages; //three part image. (leftCap, middleFill, rightCap)
