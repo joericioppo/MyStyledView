@@ -11,7 +11,7 @@
 
 @interface NSImage (Additions)
 
-- (void)drawInRect:(NSRect)rect withContentStretch:(NSRect)contentStretch;
-- (void)drawInRect:(NSRect)rect withLeftCap:(CGFloat)leftCap topCap:(CGFloat)topCap;
+- (void)drawInRect:(NSRect)rect withLeftCapWidth:(CGFloat)leftCap topCapHeight:(CGFloat)topCap;
+- (void)drawInRect:(NSRect)rect withContentStretch:(NSRect)contentStretch; // 1.0 == 1pt
 
 @end

@@ -20,7 +20,8 @@
 @synthesize inactiveBackgroundColor;
 @synthesize backgroundImage;
 @synthesize inactiveBackgroundImage;
-@synthesize contentStretch;
+@synthesize leftCapWidth;
+@synthesize topCapHeight;
 @synthesize topEdgeColor;
 @synthesize topHighlightColor;
 @synthesize bottomHighlightColor;
@@ -30,24 +31,6 @@
 @synthesize innerShadow;
 @synthesize innerGlow;
 
-- (void)dealloc {
-	
-	self.gradient = nil;
-	self.inactiveGradient = nil;
-	self.backgroundColor = nil;
-	self.inactiveBackgroundColor = nil;
-	self.backgroundImage = nil;
-	self.inactiveBackgroundImage = nil;
-	self.topEdgeColor = nil;
-	self.topHighlightColor = nil;
-	self.bottomHighlightColor = nil;
-	self.bottomEdgeColor = nil;
-	self.rightEdgeGradient = nil;
-	self.leftEdgeGradient = nil;
-	self.innerShadow = nil;
-	self.innerGlow = nil;
-	[super dealloc];
-}
 
 - (void)drawRect:(NSRect)dirtyRect {
 	
@@ -67,8 +50,8 @@
 	
 	NSImage *backgroundImageToDraw = isKeyWindow ? self.backgroundImage : self.inactiveBackgroundImage ? : self.backgroundImage;
 	if (backgroundImageToDraw) {		
-		if (self.contentStretch.origin.x != NSNotFound) {
-			[backgroundImageToDraw drawInRect:rect withContentStretch:self.contentStretch];
+		if (self.leftCapWidth != NSNotFound || self.topCapHeight != NSNotFound) {
+			[backgroundImageToDraw drawInRect:rect withLeftCapWidth:self.leftCapWidth topCapHeight:self.topCapHeight];
 		} else {
 			NSRect imageRect = NSMakeRect(0.0, 0.0, backgroundImageToDraw.size.width, backgroundImageToDraw.size.height);
 			[backgroundImageToDraw drawInRect:rect fromRect:imageRect operation:NSCompositeSourceOver fraction:1.0];

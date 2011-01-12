@@ -20,7 +20,8 @@
 
 @property (nonatomic, retain) NSImage		*backgroundImage;
 @property (nonatomic, retain) NSImage		*inactiveBackgroundImage;
-@property (nonatomic, assign) NSRect		contentStretch;
+@property (nonatomic, assign) CGFloat		leftCapWidth;
+@property (nonatomic, assign) CGFloat		topCapHeight;
 
 @property (nonatomic, retain) NSColor		*topEdgeColor;
 @property (nonatomic, retain) NSColor		*topHighlightColor;

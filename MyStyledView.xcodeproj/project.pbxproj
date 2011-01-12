@@ -153,10 +153,10 @@
 			children = (
 				5DF8E72312DAF275001A7779 /* NSGradient+Additions.h */,
 				5DF8E72412DAF275001A7779 /* NSGradient+Additions.m */,
-				5DF8E72612DAF417001A7779 /* NSBezierPath+Additions.h */,
-				5DF8E72712DAF417001A7779 /* NSBezierPath+Additions.m */,
 				5DF8E73512DAF66D001A7779 /* NSShadow+Additions.h */,
 				5DF8E73612DAF66D001A7779 /* NSShadow+Additions.m */,
+				5DF8E72612DAF417001A7779 /* NSBezierPath+Additions.h */,
+				5DF8E72712DAF417001A7779 /* NSBezierPath+Additions.m */,
 				5DE7986612DC06DC006A4C0A /* NSImage+Additions.h */,
 				5DE7986712DC06DC006A4C0A /* NSImage+Additions.m */,
 				5D17FCDE12DBABC200F1F6D3 /* NSGraphicsContext+Additions.h */,
@@ -299,6 +299,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_GC = supported;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;

@@ -11,20 +11,33 @@
 
 @implementation NSImage (Additions)
 
+- (void)drawInRect:(NSRect)rect withLeftCapWidth:(CGFloat)leftCap topCapHeight:(CGFloat)topCap {
+	
+	NSRect contentStretch = NSMakeRect(leftCap, rect.size.height - topCap, 1.0, 1.0);
+	[self drawInRect:rect withContentStretch:contentStretch];
+}
+
 - (void)drawInRect:(NSRect)rect withContentStretch:(NSRect)contentStretch {
 	
 	NSSize imageSize = self.size;
 	
-	if (imageSize.width > rect.size.width || imageSize.height > rect.size.height) {
+	if (imageSize.width > rect.size.width || imageSize.height > rect.size.height || contentStretch.origin.x == NSNotFound) {
 		NSRect imageRect = NSMakeRect(0.0, 0.0, imageSize.width, imageSize.height);
 		[self drawInRect:rect fromRect:imageRect operation:NSCompositeSourceOver fraction:1.0];
 		return;
 	}
 	
+	if (contentStretch.size.width < 1.0) {
+		contentStretch.size.width = 1.0;
+	}
+	if (contentStretch.size.height < 1.0) {
+		contentStretch.size.height = 1.0;
+	}
+	
 	CGFloat middleFillHeight = rect.size.height - imageSize.height;
 	CGFloat middleFillWidth = rect.size.width - imageSize.width;
 	
-	CGFloat topSliceSourceOriginY = self.size.height - NSMaxY(contentStretch);
+	CGFloat topSliceSourceOriginY = imageSize.height - (imageSize.height - NSMaxY(contentStretch));
 	CGFloat topSliceAdjustedOriginY = NSMinY(contentStretch) + middleFillHeight;	
 	CGFloat topSliceHeight = self.size.height - topSliceSourceOriginY;
 	
@@ -66,12 +79,6 @@
 	NSRect rectToStretch = contentStretch;
 	NSRect stretchedRectToDraw = NSMakeRect(rectToStretch.origin.x, rectToStretch.origin.y, middleFillWidth, middleFillHeight);
 	[self drawInRect:stretchedRectToDraw fromRect:rectToStretch operation:NSCompositeSourceOver fraction:1.0];
-}
-
-- (void)drawInRect:(NSRect)rect withLeftCap:(CGFloat)leftCap topCap:(CGFloat)topCap {
-	
-	NSRect contentStretch = NSMakeRect(leftCap, rect.size.height - topCap, 0.0, 0.0);
-	[self drawInRect:rect withContentStretch:contentStretch];
 }
 
 @end

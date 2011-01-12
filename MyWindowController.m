@@ -39,7 +39,8 @@
 	self.background.bottomEdgeColor = [NSColor colorWithCalibratedWhite:0.27 alpha:1.0];
 	
 	self.popUpThing.backgroundImage = [NSImage imageNamed:@"dark_popup.png"];
-	self.popUpThing.contentStretch = NSMakeRect(80.0, 50.0, 1.0, 1.0);
+	self.popUpThing.leftCapWidth = 80.0;
+	self.popUpThing.topCapHeight = 55.0;
 	
 	//--
 	self.toolBar.gradient = [NSGradient gradientWithStartingColor:[NSColor colorWithCalibratedHue:0.625 saturation:0.0 brightness:0.7 alpha:1.0] 
