@@ -32,6 +32,26 @@
 @synthesize innerGlow;
 
 
+- (void)dealloc {
+
+	self.gradient = nil;
+	self.inactiveGradient = nil;
+	self.backgroundColor = nil;
+	self.inactiveBackgroundColor = nil;
+	self.backgroundImage = nil;
+	self.inactiveBackgroundImage = nil;
+	self.topEdgeColor = nil;
+	self.topHighlightColor = nil;
+	self.bottomHighlightColor = nil;
+	self.bottomEdgeColor = nil;
+	self.rightEdgeGradient = nil;
+	self.leftEdgeGradient = nil;
+	self.innerShadow = nil;
+	self.innerGlow = nil;
+	[super dealloc];
+}
+
+
 - (void)drawRect:(NSRect)dirtyRect {
 	
 	NSRect rect = self.bounds;
