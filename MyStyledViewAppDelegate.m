@@ -16,7 +16,6 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 	
 	self.windowController = [[[MyWindowController alloc] initWithWindowNibName:@"MyWindow"] autorelease];
-
 	[self.windowController showWindow:self];
 }
 

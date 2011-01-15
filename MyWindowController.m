@@ -38,6 +38,7 @@
 											   blurRadius:10.0];
 	self.background.bottomEdgeColor = [NSColor colorWithCalibratedWhite:0.27 alpha:1.0];
 	
+	//--
 	self.popUpThing.backgroundImage = [NSImage imageNamed:@"dark_popup.png"];
 	self.popUpThing.leftCapWidth = 80.0;
 	self.popUpThing.topCapHeight = 55.0;

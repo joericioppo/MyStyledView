@@ -1,5 +1,6 @@
 //
 //  NSShadow+Additions.m
+//  MyStyledView
 //
 // http://www.seanpatrickobrien.com/journal/posts/3
 //

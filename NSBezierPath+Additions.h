@@ -1,5 +1,6 @@
 //
 //  NSBezierPath+Additions.h
+//  MyStyledView
 //
 // http://www.seanpatrickobrien.com/journal/posts/3
 //
