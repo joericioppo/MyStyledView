@@ -2,7 +2,8 @@
 //  NSGraphicsContext+Additions.m
 //  MyStyledView
 //
-//  http://jonathandann.wordpress.com/2009/09/09/forget-the-code/
+//  adapted from http://jonathandann.wordpress.com/2009/09/09/forget-the-code/
+//  BSD License
 //
 
 #import "NSGraphicsContext+Additions.h"

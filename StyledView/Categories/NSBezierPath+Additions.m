@@ -3,6 +3,7 @@
 //  MyStyledView
 //
 //	http://www.seanpatrickobrien.com/journal/posts/3
+//  BSD License
 //
 
 #import "NSBezierPath+Additions.h"
