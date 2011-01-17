@@ -17,6 +17,7 @@
 		5DE79C3912E3DC8E006A4C0A /* MyStyledViewAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE79C3612E3DC8E006A4C0A /* MyStyledViewAppDelegate.m */; };
 		5DE79C3A12E3DC8E006A4C0A /* MyWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE79C3812E3DC8E006A4C0A /* MyWindowController.m */; };
 		5DE79E1012E42259006A4C0A /* dark_popup.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DE79E0F12E42259006A4C0A /* dark_popup.png */; };
+		5DE79E4312E426C4006A4C0A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5DE79E4212E426C4006A4C0A /* README.md */; };
 		5DF8E74012DAF7D0001A7779 /* MyWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DF8E73F12DAF7D0001A7779 /* MyWindow.xib */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -49,6 +50,7 @@
 		5DE79C3712E3DC8E006A4C0A /* MyWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyWindowController.h; path = Controller/MyWindowController.h; sourceTree = "<group>"; };
 		5DE79C3812E3DC8E006A4C0A /* MyWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyWindowController.m; path = Controller/MyWindowController.m; sourceTree = "<group>"; };
 		5DE79E0F12E42259006A4C0A /* dark_popup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dark_popup.png; sourceTree = "<group>"; };
+		5DE79E4212E426C4006A4C0A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		5DF8E73F12DAF7D0001A7779 /* MyWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyWindow.xib; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* MyStyledView-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MyStyledView-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* MyStyledView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyStyledView.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,6 +131,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5DE79E4212E426C4006A4C0A /* README.md */,
 				8D1107310486CEB800E47090 /* MyStyledView-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
@@ -227,6 +230,7 @@
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 				5DF8E74012DAF7D0001A7779 /* MyWindow.xib in Resources */,
 				5DE79E1012E42259006A4C0A /* dark_popup.png in Resources */,
+				5DE79E4312E426C4006A4C0A /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
