@@ -3,7 +3,7 @@
 //  MyStyledView
 //
 //  Created by Joe Ricioppo on 1/9/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  BSD License
 //
 
 #import "MyStyledView.h"
@@ -26,8 +26,8 @@
 @synthesize topHighlightColor;
 @synthesize bottomHighlightColor;
 @synthesize bottomEdgeColor;
-@synthesize rightEdgeGradient;
 @synthesize leftEdgeGradient;
+@synthesize rightEdgeGradient;
 @synthesize innerShadow;
 @synthesize innerGlow;
 
@@ -44,8 +44,8 @@
 	self.topHighlightColor = nil;
 	self.bottomHighlightColor = nil;
 	self.bottomEdgeColor = nil;
+	self.leftEdgeGradient = nil;	
 	self.rightEdgeGradient = nil;
-	self.leftEdgeGradient = nil;
 	self.innerShadow = nil;
 	self.innerGlow = nil;
 	[super dealloc];
@@ -73,22 +73,17 @@
 		if (self.leftCapWidth != NSNotFound || self.topCapHeight != NSNotFound) {
 			[backgroundImageToDraw drawInRect:rect withLeftCapWidth:self.leftCapWidth topCapHeight:self.topCapHeight];
 		} else {
-			NSRect imageRect = NSMakeRect(0.0, 0.0, backgroundImageToDraw.size.width, backgroundImageToDraw.size.height);
-			[backgroundImageToDraw drawInRect:rect fromRect:imageRect operation:NSCompositeSourceOver fraction:1.0];
+			[backgroundImageToDraw drawInRect:rect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
 		}
 	}
 	
-	if (self.innerShadow) {
-		NSBezierPath *innerShadowPath = [NSBezierPath bezierPathWithRect:rect];
-		[innerShadowPath fillWithInnerShadow:self.innerShadow];
-	}
-	
-	if (self.innerGlow) {
-		NSBezierPath *innerGlowPath = [NSBezierPath bezierPathWithRect:rect];
-		[innerGlowPath fillWithInnerShadow:self.innerGlow];
-	}
+	CGFloat topInset = 0.0;
+	CGFloat bottomInset = 0.0;
+	CGFloat leftInset = 0.0;
+	CGFloat rightInset = 0.0;
 	
 	if (self.topEdgeColor) {
+		topInset += 1.0;
 		NSBezierPath *topHighlightPath = [NSBezierPath bezierPath];
 		[topHighlightPath setLineWidth:0.0];
 		[topHighlightPath moveToPoint:NSPointFromCGPoint(CGPointMake(rect.origin.x, NSMaxY(rect) -0.5))];
@@ -100,6 +95,7 @@
 	}
 	
 	if (self.topHighlightColor) {
+		topInset += 1.0;
 		NSBezierPath *topHighlightPath = [NSBezierPath bezierPath];
 		[topHighlightPath setLineWidth:0.0];
 		[topHighlightPath moveToPoint:NSPointFromCGPoint(CGPointMake(rect.origin.x, NSMaxY(rect) -1.5))];
@@ -111,6 +107,7 @@
 	}
 	
 	if (self.bottomHighlightColor) {
+		bottomInset += 1.0;
 		NSBezierPath *bottomHighlightPath = [NSBezierPath bezierPath];
 		[bottomHighlightPath setLineWidth:1.0];
 		[bottomHighlightPath moveToPoint:NSPointFromCGPoint(CGPointMake(rect.origin.x, rect.origin.y + 1.5))];
@@ -122,6 +119,7 @@
 	}
 	
 	if (self.bottomEdgeColor) {
+		bottomInset += 1.0;
 		NSBezierPath *bottomEdgePath = [NSBezierPath bezierPath];
 		[bottomEdgePath setLineWidth:1.0];
 		[bottomEdgePath moveToPoint:NSPointFromCGPoint(CGPointMake(rect.origin.x, rect.origin.y + 0.5))];
@@ -132,15 +130,37 @@
 		[bottomEdgePath stroke];
 	}
 	
+	if (self.leftEdgeGradient) {
+		leftInset += 1.0;
+		NSRect edgeRect = NSMakeRect(0.0, 0.0, 1.0, NSMaxY(rect));
+		edgeRect.origin.y += bottomInset;
+		edgeRect.size.height -= (bottomInset + topInset);
+		[self.leftEdgeGradient drawInRect:edgeRect angle:self.isFlipped ? 90 : -90];
+	}
+	
 	if (self.rightEdgeGradient) {
-		NSRect edgeRect = NSMakeRect((NSMaxX(rect) - 1.5), 0.0, 1.0, NSMaxY(rect));		
+		rightInset += 1.0;
+		NSRect edgeRect = NSMakeRect((NSMaxX(rect) - 1.0), 0.0, 1.0, NSMaxY(rect));
+		edgeRect.origin.y += bottomInset;
+		edgeRect.size.height -= (bottomInset + topInset);		
 		[self.rightEdgeGradient drawInRect:edgeRect angle:self.isFlipped ? 90 : -90];
 	}
 	
-	if (self.leftEdgeGradient) {
-		NSRect edgeRect = NSMakeRect(0.0, 0.0, 1.0, NSMaxY(rect));
-		[self.leftEdgeGradient drawInRect:edgeRect angle:self.isFlipped ? 90 : -90];
+	CGRect shadowRect = rect;
+	shadowRect.origin.x += leftInset;
+	shadowRect.size.width -= (leftInset + rightInset);
+	shadowRect.origin.y += bottomInset;
+	shadowRect.size.height -= (bottomInset + topInset);
+	
+	if (self.innerShadow) {
+		NSBezierPath *innerShadowPath = [NSBezierPath bezierPathWithRect:shadowRect];
+		[innerShadowPath fillWithInnerShadow:self.innerShadow];
 	}
+	
+	if (self.innerGlow) {
+		NSBezierPath *innerGlowPath = [NSBezierPath bezierPathWithRect:shadowRect];
+		[innerGlowPath fillWithInnerShadow:self.innerGlow];
+	}	
 }
 
 @end

@@ -3,7 +3,7 @@
 //  MyStyledView
 //
 //  Created by Joe Ricioppo on 1/10/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  BSD License
 //
 
 #import "NSImage+Additions.h"
@@ -11,9 +11,9 @@
 
 @implementation NSImage (Additions)
 
-- (void)drawInRect:(NSRect)rect withLeftCapWidth:(CGFloat)leftCap topCapHeight:(CGFloat)topCap {
+- (void)drawInRect:(NSRect)rect withLeftCapWidth:(CGFloat)leftCapWidth topCapHeight:(CGFloat)topCapHeight {
 	
-	NSRect contentStretch = NSMakeRect(leftCap, rect.size.height - topCap, 1.0, 1.0);
+	NSRect contentStretch = NSMakeRect(leftCapWidth, rect.size.height - topCapHeight, 1.0, 1.0);
 	[self drawInRect:rect withContentStretch:contentStretch];
 }
 
@@ -22,8 +22,7 @@
 	NSSize imageSize = self.size;
 	
 	if (imageSize.width > rect.size.width || imageSize.height > rect.size.height || contentStretch.origin.x == NSNotFound) {
-		NSRect imageRect = NSMakeRect(0.0, 0.0, imageSize.width, imageSize.height);
-		[self drawInRect:rect fromRect:imageRect operation:NSCompositeSourceOver fraction:1.0];
+		[self drawInRect:rect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
 		return;
 	}
 	
@@ -39,11 +38,11 @@
 	
 	CGFloat topSliceSourceOriginY = imageSize.height - (imageSize.height - NSMaxY(contentStretch));
 	CGFloat topSliceAdjustedOriginY = NSMinY(contentStretch) + middleFillHeight;	
-	CGFloat topSliceHeight = self.size.height - topSliceSourceOriginY;
+	CGFloat topSliceHeight = imageSize.height - topSliceSourceOriginY;
 	
 	CGFloat rightSliceSourceOriginX = NSMaxX(contentStretch);
 	CGFloat rightSliceAdjustedOriginX = NSMinX(contentStretch) + middleFillWidth;
-	CGFloat rightSliceWidth = self.size.width - rightSliceSourceOriginX;
+	CGFloat rightSliceWidth = imageSize.width - rightSliceSourceOriginX;
 	
 	NSRect bottomLeftCornerRect = NSMakeRect(0.0, 0.0, contentStretch.origin.x, contentStretch.origin.y);
 	[self drawInRect:bottomLeftCornerRect fromRect:bottomLeftCornerRect operation:NSCompositeSourceOver fraction:1.0];

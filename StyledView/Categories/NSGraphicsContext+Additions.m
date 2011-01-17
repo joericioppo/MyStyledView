@@ -2,7 +2,7 @@
 //  NSGraphicsContext+Additions.m
 //  MyStyledView
 //
-// http://jonathandann.wordpress.com/2009/09/09/forget-the-code/
+//  http://jonathandann.wordpress.com/2009/09/09/forget-the-code/
 //
 
 #import "NSGraphicsContext+Additions.h"

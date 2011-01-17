@@ -2,7 +2,7 @@
 //  NSBezierPath+Additions.m
 //  MyStyledView
 //
-// http://www.seanpatrickobrien.com/journal/posts/3
+//	http://www.seanpatrickobrien.com/journal/posts/3
 //
 
 #import "NSBezierPath+Additions.h"
@@ -22,7 +22,7 @@
 		offset.height += bounds.size.height;
 		shadow.shadowOffset = offset;
 		NSAffineTransform *transform = [NSAffineTransform transform];
-		if ([[NSGraphicsContext currentContext] isFlipped])
+		if ([currentContext isFlipped])
 			[transform translateXBy:0 yBy:bounds.size.height];
 		else
 			[transform translateXBy:0 yBy:-bounds.size.height];

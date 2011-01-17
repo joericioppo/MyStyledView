@@ -3,11 +3,13 @@
 //  MyStyledView
 //
 //  Created by Joe Ricioppo on 1/9/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  BSD License
 //
 
 #import "MyStyledViewAppDelegate.h"
 #import "MyWindowController.h"
+
+static NSString * const kMyWindowXibName = @"MyWindow";
 
 @implementation MyStyledViewAppDelegate
 
@@ -15,7 +17,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 	
-	self.windowController = [[[MyWindowController alloc] initWithWindowNibName:@"MyWindow"] autorelease];
+	self.windowController = [[[MyWindowController alloc] initWithWindowNibName:kMyWindowXibName] autorelease];
 	[self.windowController showWindow:self];
 }
 

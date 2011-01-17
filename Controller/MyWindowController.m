@@ -3,7 +3,7 @@
 //  MyStyledView
 //
 //  Created by Joe Ricioppo on 1/10/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  BSD License
 //
 
 #import "MyWindowController.h"
@@ -39,9 +39,9 @@
 	self.background.bottomEdgeColor = [NSColor colorWithCalibratedWhite:0.27 alpha:1.0];
 	
 	//--
-	self.popUpThing.backgroundImage = [NSImage imageNamed:@"dark_popup.png"];
+	self.popUpThing.backgroundImage = [NSImage imageNamed:@"dark_popup.png"]; // image is copywrite, because it's not pixel correct. draw your own mofo.
 	self.popUpThing.leftCapWidth = 80.0;
-	self.popUpThing.topCapHeight = 55.0;
+	self.popUpThing.topCapHeight = 60.0;
 	
 	//--
 	self.toolBar.gradient = [NSGradient gradientWithStartingColor:[NSColor colorWithCalibratedHue:0.625 saturation:0.0 brightness:0.7 alpha:1.0] 

@@ -3,10 +3,8 @@
 //  MyStyledView
 //
 //  Created by Joe Ricioppo on 1/9/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  BSD License
 //
-
-#import <Cocoa/Cocoa.h>
 
 
 @interface MyStyledView : NSView {}
@@ -28,8 +26,8 @@
 @property (nonatomic, retain) NSColor		*bottomHighlightColor;
 @property (nonatomic, retain) NSColor		*bottomEdgeColor;
 
-@property (nonatomic, retain) NSGradient	*rightEdgeGradient;
 @property (nonatomic, retain) NSGradient	*leftEdgeGradient;
+@property (nonatomic, retain) NSGradient	*rightEdgeGradient;
 
 @property (nonatomic, retain) NSShadow		*innerShadow;
 @property (nonatomic, retain) NSShadow		*innerGlow;
