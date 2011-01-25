@@ -10,6 +10,12 @@
 #import "NSBezierPath+Additions.h"
 #import "NSImage+Additions.h"
 
+@interface MyStyledView ()
+- (void)renderStyle;
+
+@property (nonatomic, retain) NSImage *cacheImage;
+@end
+
 
 @implementation MyStyledView
 
@@ -30,6 +36,8 @@
 @synthesize rightEdgeGradient;
 @synthesize innerShadow;
 @synthesize innerGlow;
+@synthesize cacheImage;
+@synthesize shouldRasterize;
 
 
 - (void)dealloc {
@@ -48,11 +56,36 @@
 	self.rightEdgeGradient = nil;
 	self.innerShadow = nil;
 	self.innerGlow = nil;
+	self.cacheImage = nil;
 	[super dealloc];
 }
 
 
 - (void)drawRect:(NSRect)dirtyRect {
+	
+	if([self isHiddenOrHasHiddenAncestor]) return;
+	
+	BOOL isCaching = self.shouldRasterize && self.cacheImage == nil;
+	if(isCaching) {
+		self.cacheImage = [[[NSImage alloc] initWithSize:self.bounds.size] autorelease];
+		[self.cacheImage lockFocus];
+	}
+	
+	// only render if we're re-drawing for the cache or if we're not caching
+	if(!self.shouldRasterize || isCaching) {
+		[self renderStyle];
+	}
+	
+	if(isCaching) {
+		[self.cacheImage unlockFocus];
+	}
+	
+	if(self.shouldRasterize) {
+		[self.cacheImage drawInRect:dirtyRect fromRect:dirtyRect operation:NSCompositeSourceOver fraction:1.0f];
+	}
+}
+
+- (void)renderStyle {
 	
 	NSRect rect = self.bounds;
 	BOOL isKeyWindow = [[self window] isKeyWindow];	
@@ -160,7 +193,29 @@
 	if (self.innerGlow) {
 		NSBezierPath *innerGlowPath = [NSBezierPath bezierPathWithRect:shadowRect];
 		[innerGlowPath fillWithInnerShadow:self.innerGlow];
-	}	
+	}
+}
+
+- (void)setFrameSize:(NSSize)newSize {
+	
+	if(newSize.width != self.frame.size.width || newSize.height != self.frame.size.height) {
+		[self invalidateRasterization];
+	}
+	
+	[super setFrameSize:newSize];
+}
+
+- (void)invalidateRasterization {
+	
+	self.cacheImage = nil;
+	[self setNeedsDisplay:YES];
+}
+
+- (void)setShouldRasterize:(BOOL)rasterize {
+	
+	shouldRasterize = rasterize;
+	
+	[self invalidateRasterization];
 }
 
 @end

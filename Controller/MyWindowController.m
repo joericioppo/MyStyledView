@@ -42,6 +42,7 @@
 	self.popUpThing.backgroundImage = [NSImage imageNamed:@"dark_popup.png"]; // image is copywrite, because it is not pixel correct. draw your own mofo.
 	self.popUpThing.leftCapWidth = 80.0;
 	self.popUpThing.topCapHeight = 60.0;
+	self.popUpThing.shouldRasterize = YES;
 	
 	//--
 	self.toolBar.gradient = [NSGradient gradientWithStartingColor:[NSColor colorWithCalibratedHue:0.625 saturation:0.0 brightness:0.7 alpha:1.0] 
