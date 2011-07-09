@@ -36,6 +36,7 @@
 @synthesize innerShadow;
 @synthesize innerGlow;
 @synthesize cacheImage;
+@synthesize styleBlock;
 @synthesize shouldRasterize;
 
 
@@ -56,6 +57,7 @@
 	self.innerShadow = nil;
 	self.innerGlow = nil;
 	self.cacheImage = nil;
+	self.styleBlock = nil;
 	[super dealloc];
 }
 
@@ -194,6 +196,10 @@
 	if (self.innerGlow) {
 		NSBezierPath *innerGlowPath = [NSBezierPath bezierPathWithRect:shadowRect];
 		[innerGlowPath fillWithInnerShadow:self.innerGlow];
+	}
+	
+	if (self.styleBlock) {
+		self.styleBlock(rect);
 	}
 }
 

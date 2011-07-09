@@ -32,6 +32,8 @@
 @property (nonatomic, retain) NSShadow		*innerShadow;
 @property (nonatomic, retain) NSShadow		*innerGlow;
 
+@property (nonatomic, copy) void (^styleBlock)(NSRect rect);
+
 @property (nonatomic, assign) BOOL			shouldRasterize;
 
 // -------------- topEdge

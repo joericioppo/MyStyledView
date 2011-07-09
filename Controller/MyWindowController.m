@@ -49,6 +49,18 @@
 													  endingColor:[NSColor colorWithCalibratedHue:0.625 saturation:0.0 brightness:0.6 alpha:1.0]];
 	self.toolBar.topEdgeColor = [NSColor colorWithCalibratedWhite:0.8 alpha:1.0];
 	self.toolBar.bottomEdgeColor = [NSColor colorWithCalibratedWhite:0.65 alpha:1.0];
+	
+	NSGradient *shineGadient = [NSGradient gradientWithStartingColor:[NSColor colorWithDeviceWhite:1.0 alpha:1.0] 
+														 endingColor:[NSColor colorWithDeviceWhite:1.0 alpha:0.0]];
+	NSGradient *shadowGradient = [NSGradient gradientWithStartingColor:[NSColor colorWithDeviceWhite:0.0 alpha:0.0] 
+														 endingColor:[NSColor colorWithDeviceWhite:0.0 alpha:0.3]];
+	
+	self.background.styleBlock = ^(NSRect rect) {
+		NSPoint startPoint = NSMakePoint(NSMidX(rect), NSMaxY(rect) + 150.0);
+		NSPoint endPoint = NSMakePoint(NSMidX(rect), NSMidY(rect));
+		[shadowGradient drawFromCenter:startPoint radius:0.0 toCenter:endPoint radius:rect.size.height + 20.0 options:0];
+		[shineGadient drawFromCenter:startPoint radius:0.0 toCenter:endPoint radius:rect.size.height options:0];
+	};
 }
 
 @end
