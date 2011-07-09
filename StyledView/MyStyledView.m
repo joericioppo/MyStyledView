@@ -11,9 +11,8 @@
 #import "NSImage+Additions.h"
 
 @interface MyStyledView ()
-- (void)renderStyle;
-
 @property (nonatomic, retain) NSImage *cacheImage;
+- (void)renderStyle;
 @end
 
 
@@ -63,25 +62,27 @@
 
 - (void)drawRect:(NSRect)dirtyRect {
 	
-	if([self isHiddenOrHasHiddenAncestor]) return;
+	if ([self isHiddenOrHasHiddenAncestor]) {
+		return;
+	}
 	
 	BOOL isCaching = self.shouldRasterize && self.cacheImage == nil;
-	if(isCaching) {
+	if (isCaching) {
 		self.cacheImage = [[[NSImage alloc] initWithSize:self.bounds.size] autorelease];
 		[self.cacheImage lockFocus];
 	}
 	
 	// only render if we're re-drawing for the cache or if we're not caching
-	if(!self.shouldRasterize || isCaching) {
+	if (self.shouldRasterize == NO || isCaching) {
 		[self renderStyle];
 	}
 	
-	if(isCaching) {
+	if (isCaching) {
 		[self.cacheImage unlockFocus];
 	}
 	
-	if(self.shouldRasterize) {
-		[self.cacheImage drawInRect:dirtyRect fromRect:dirtyRect operation:NSCompositeSourceOver fraction:1.0f];
+	if (self.shouldRasterize) {
+		[self.cacheImage drawInRect:dirtyRect fromRect:dirtyRect operation:NSCompositeSourceOver fraction:1.0];
 	}
 }
 
@@ -198,7 +199,7 @@
 
 - (void)setFrameSize:(NSSize)newSize {
 	
-	if(newSize.width != self.frame.size.width || newSize.height != self.frame.size.height) {
+	if (newSize.width != self.frame.size.width || newSize.height != self.frame.size.height) {
 		[self invalidateRasterization];
 	}
 	
@@ -213,8 +214,7 @@
 
 - (void)setShouldRasterize:(BOOL)rasterize {
 	
-	shouldRasterize = rasterize;
-	
+	shouldRasterize = rasterize;	
 	[self invalidateRasterization];
 }
 
