@@ -30,6 +30,8 @@
 	
 	//--
 	self.background.backgroundColor = [NSColor colorWithCalibratedHue:0.625 saturation:0.0 brightness:0.82 alpha:1.0];
+//	self.background.imageIsTileable = YES;
+//	self.background.backgroundImage = [NSImage imageNamed:@"dark_popup.png"];
 //	self.background.innerShadow = [NSShadow shadowWithColor:[NSColor colorWithCalibratedHue:0.625 saturation:0.0 brightness:0.0 alpha:0.23]
 //													 offset:NSMakeSize(0.0, 0.0)
 //												 blurRadius:2.0];

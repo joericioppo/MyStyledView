@@ -27,6 +27,7 @@
 @synthesize inactiveBackgroundImage;
 @synthesize leftCapWidth;
 @synthesize topCapHeight;
+@synthesize imageIsTileable;
 @synthesize topEdgeColor;
 @synthesize topHighlightColor;
 @synthesize bottomHighlightColor;
@@ -105,8 +106,22 @@
 	}
 	
 	NSImage *backgroundImageToDraw = isKeyWindow ? self.backgroundImage : self.inactiveBackgroundImage ? : self.backgroundImage;
-	if (backgroundImageToDraw) {		
-		if (self.leftCapWidth != NSNotFound || self.topCapHeight != NSNotFound) {
+	if (backgroundImageToDraw) {
+		if (imageIsTileable == true) {
+			// We're about to mess with the pattern phase. Save the current graphics state first so we can restore it.
+			[[NSGraphicsContext currentContext] saveGraphicsState];
+			
+			// This little trick makes the background pattern appear to draw from the the top-left corner rather than from the bottom-left corner. This is visually important when the view resizes when the window is resized.
+			[[NSGraphicsContext currentContext] setPatternPhase:NSMakePoint([self frame].origin.x,[self frame].size.height)];
+			
+			// Stick the image in a color and fill the view with that color.
+			[[NSColor colorWithPatternImage:backgroundImageToDraw] set];
+			NSRectFill(rect);
+			
+			// Restore the original graphics state.
+			[[NSGraphicsContext currentContext] restoreGraphicsState];
+		}
+		else if (self.leftCapWidth != NSNotFound || self.topCapHeight != NSNotFound) {
 			[backgroundImageToDraw drawInRect:rect withLeftCapWidth:self.leftCapWidth topCapHeight:self.topCapHeight];
 		} else {
 			[backgroundImageToDraw drawInRect:rect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];

@@ -20,6 +20,7 @@
 @property (nonatomic, retain) NSImage		*inactiveBackgroundImage;
 @property (nonatomic, assign) CGFloat		leftCapWidth;
 @property (nonatomic, assign) CGFloat		topCapHeight;
+@property (nonatomic, assign) BOOL			imageIsTileable;
 
 @property (nonatomic, retain) NSColor		*topEdgeColor;
 @property (nonatomic, retain) NSColor		*topHighlightColor;
